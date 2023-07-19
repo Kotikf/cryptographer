@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'project1.ui'
+# Form implementation generated from reading ui file 'untitled.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.9
 #
@@ -15,85 +15,92 @@ from decryption import Decryption
 from encryption import Encryption
 
 
+
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(400, 250)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setObjectName("centralwidget")
-        self.btn_encryption = QtWidgets.QPushButton(self.centralwidget)
-        self.btn_encryption.setGeometry(QtCore.QRect(10, 170, 91, 23))
-        self.btn_encryption.setObjectName("btn_encryption")
-        self.btn_decryption = QtWidgets.QPushButton(self.centralwidget)
-        self.btn_decryption.setGeometry(QtCore.QRect(120, 170, 91, 23))
-        self.btn_decryption.setObjectName("btn_decryption")
-        self.btn_choose_folder = QtWidgets.QPushButton(self.centralwidget)
-        self.btn_choose_folder.setGeometry(QtCore.QRect(10, 90, 91, 23))
-        self.btn_choose_folder.setObjectName("btn_choose_folder")
-        self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(10, 120, 300, 21))
-        self.label.setText("")
-        self.label.setObjectName("label")
-        self.label_2 = QtWidgets.QLabel(self.centralwidget)
-        self.label_2.setGeometry(QtCore.QRect(10, 40, 101, 16))
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.label_2.setFont(font)
-        self.label_2.setObjectName("label_2")
-        self.password_input = QtWidgets.QLineEdit(self.centralwidget)
-        self.password_input.setGeometry(QtCore.QRect(120, 40, 113, 20))
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
+        MainWindow.resize(500, 150)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.password_input.sizePolicy().hasHeightForWidth())
-        self.password_input.setSizePolicy(sizePolicy)
-        self.password_input.setStyleSheet("text-align: center\n"
+        sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
+        MainWindow.setSizePolicy(sizePolicy)
+        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setObjectName("centralwidget")
+        self.Folder = QtWidgets.QPushButton(self.centralwidget)
+        self.Folder.setGeometry(QtCore.QRect(20, 40, 91, 23))
+        self.Folder.setStyleSheet("QPushButton:hover {\n"
+"    background-color:rgb(213, 215, 245)\n"
+"}\n"
+"QPushButton:pressed {\n"
+"    border: 1.5px solid rgb(225, 225, 225)\n"
+"}\n"
 "")
-        self.password_input.setObjectName("password_input")
+        self.Folder.setObjectName("Folder")
+        self.path = QtWidgets.QLineEdit(self.centralwidget)
+        self.path.setGeometry(QtCore.QRect(120, 40, 350, 23))
+        self.path.setObjectName("lineEdit")
+        self.lable = QtWidgets.QLabel(self.centralwidget)
+        self.lable.setGeometry(QtCore.QRect(20, 80, 91, 23))
+        self.password_input = QtWidgets.QLineEdit(self.centralwidget)
+        self.password_input.setGeometry(QtCore.QRect(120, 80, 200, 23))
+        self.decrypt = QtWidgets.QPushButton(self.centralwidget)
+        self.decrypt.setGeometry(QtCore.QRect(20, 120, 91, 23))
+        self.decrypt.setStyleSheet("QPushButton:hover {\n"
+"    background-color:rgb(213, 215, 245)\n"
+"}\n"
+"QPushButton:pressed {\n"
+"    border: 1.5px solid rgb(225, 225, 225)\n"
+"}\n"
+"")
+        self.decrypt.setObjectName("decrypt")
+        self.encrypt = QtWidgets.QPushButton(self.centralwidget)
+        self.encrypt.setGeometry(QtCore.QRect(120, 120, 91, 23))
+        self.encrypt.setStyleSheet("QPushButton:hover {\n"
+"    background-color:rgb(213, 215, 245)\n"
+"}\n"
+"QPushButton:pressed {\n"
+"    border: 1.5px solid rgb(225, 225, 225)\n"
+"}\n"
+"")
+        self.encrypt.setObjectName("encrypt")
         MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
-        self.menubar.setObjectName("menubar")
-        MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
-        self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-        self.btn_choose_folder.clicked.connect(self.get_path)
-        self.btn_decryption.clicked.connect(self.decrypt_file)
-        self.btn_encryption.clicked.connect(self.encrypt_file)
+        self.Folder.clicked.connect(self.get_path_folder)
+        self.encrypt.clicked.connect(self.encrypt_file)
+        self.decrypt.clicked.connect(self.decrypt_file)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.btn_encryption.setText(_translate("MainWindow", "Зашифровать"))
-        self.btn_decryption.setText(_translate("MainWindow", "Расшифровать"))
-        self.btn_choose_folder.setText(_translate("MainWindow", "Выбрать папку"))
-        self.label_2.setText(_translate("MainWindow", "Введите пароль"))
+        self.Folder.setText(_translate("MainWindow", "выбрать папку"))
+        self.decrypt.setText(_translate("MainWindow", "Расшифровать"))
+        self.encrypt.setText(_translate("MainWindow", "Зашифровать"))
+        self.lable.setText('Введите пароль')
 
-    def get_path(self):
-        self.label.setText(QFileDialog.getExistingDirectory(None, 'Open directory', './'))
+    def get_path_folder(self):
+        self.path.setText(QFileDialog.getExistingDirectory(None, 'Open directory', './'))
 
     def get_password(self):
-        password = self.password_input.text().strip()
-        if len(password) < 3:
-            error = QMessageBox()
-            # error.setStyleSheet("QLabel{min-width: 200px;}")
-            error.setWindowTitle('Слишком короткий пароль')
-            error.setText('Минимальная длина пароля - 4 символа')
-            error.setIcon(QMessageBox.Warning)
+            password = self.password_input.text().strip()
+            if len(password) <= 3:
+                error = QMessageBox()
+                error.setWindowTitle('Слишком короткий пароль')
+                error.setText('Минимальная длина пароля - 4 символа')
+                error.setIcon(QMessageBox.Warning)
 
-            error.exec_()
-        if len(password) > 3:
-            return password
-        
+                error.exec_()
+            if len(password) > 3:
+                return password
+
+
     def decrypt_file(self):
         try:
             password = self.get_password()
-            Decryption().walking_by_dirs(dir=self.label.text(), password=password)
+            Decryption().walking_by_dirs(dir=self.path.text(), password=password)
         except FileNotFoundError:
             error = QMessageBox()
             error.setWindowTitle('Неверный путь')
@@ -105,7 +112,7 @@ class Ui_MainWindow(object):
     def encrypt_file(self):
         try:
             password = self.get_password()
-            Encryption().walking_by_dirs(dir=self.label.text(), password=self.get_password())
+            Encryption().walking_by_dirs(dir=self.path.text(), password=password)
         except FileNotFoundError:
             error = QMessageBox()
             error.setWindowTitle('Неверный путь')
@@ -113,6 +120,7 @@ class Ui_MainWindow(object):
             error.setIcon(QMessageBox.Warning)
 
             error.exec_()
+
 
 if __name__ == "__main__":
     import sys
