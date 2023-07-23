@@ -97,24 +97,22 @@ class Ui_MainWindow(object):
             password = self.get_password()
             Decryption().walking_by_dirs(dir=self.path.text(), password=password)
         except FileNotFoundError:
-            error = QMessageBox()
-            error.setWindowTitle('Неверный путь')
-            error.setText('Файл не существует или путь указан с ошибками')
-            error.setIcon(QMessageBox.Warning)
-
-            error.exec_()
+            self.error()
 
     def encrypt_file(self):
         try:
             password = self.get_password()
             Encryption().walking_by_dirs(dir=self.path.text(), password=password)
         except FileNotFoundError:
-            error = QMessageBox()
-            error.setWindowTitle('Неверный путь')
-            error.setText('Файл не существует или путь указан с ошибками')
-            error.setIcon(QMessageBox.Warning)
+            self.error()
 
-            error.exec_()
+    def error(self):
+        error = QMessageBox()
+        error.setWindowTitle('Неверный путь')
+        error.setText('Файл не существует или путь указан с ошибками')
+        error.setIcon(QMessageBox.Warning)
+
+        error.exec_()
 
 
 if __name__ == "__main__":
